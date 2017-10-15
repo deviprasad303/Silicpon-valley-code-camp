@@ -1,0 +1,76 @@
+<div class="col-sm-10 col-sm-offset-1">
+<div class="row">
+    <textarea ng-model="newMean"
+    ng-keypress="SendMean($event)"
+    class="form-control"
+    placeholder="Post Mean... then press enter">
+
+
+    </textarea>
+</div>
+    <div class="row">
+    <div class="col-xs-6 col-md-4">
+
+        <table class="mean-section">
+            <tr ><a ng-if="incomingmeans.length>0" ng-click="setNewMean()">There are {{difference}} new posts</a></tr>
+            <tr ng-repeat="mean in means">
+                <td>{{mean.user}}
+                    <image ng-src="{{mean.userImage}}"></image>
+                </td>
+
+<td>
+    <strong>{{mean.date|date:'MM/DD/YY hh:mm'}}</strong><br>
+    <p>{{mean.content}}</p>
+</td>
+
+                </image>
+            </tr>
+        </table>
+</div>
+<div class="col-xs-6 col-md-4">
+    <table class="group-section">
+        <tr><a ui-sref="group">Create a New group</a></tr>
+        <tr><a ui-sref="task">Create a new Group task</a></tr>
+    </br>
+
+        <b> Groups</b>
+        </br>
+<ul ng-repeat="user1 in users" ng-show="user.email===user1.email">
+
+    <ul ng-repeat ="group in user1.groups">
+        <ul ng-repeat="mygroup in mygroups" ng-show="group._id===mygroup._id">
+            <strong> Groupname:
+            </strong></br></strong>{{mygroup.Groupname}}
+            </br><strong>Members</strong></br>
+            <ul ng-repeat="mem in mygroup.Members">
+                <ul ng-repeat="user12 in users" ng-show="user12._id===mem._id">
+
+                    {{user12.username}}
+                </ul>
+
+            </ul>
+            </br><strong>Notifications</strong></br>
+        </ul>
+    </ul>
+
+</ul>
+
+    </table>
+</div>
+        <div class="col-xs-6 col-md-4">
+            <strong>Task Board</strong>
+        </br>
+            <table class="group-section">
+                <tr><a ui-sref="task">Create New task</a></tr>
+
+            </br><strong>your tasks</strong>
+            <tr ng-repeat="task in tasks" ng-show="user._id==task.userId">
+                <td>{{task.taskname}}</td>
+                <td>{{task.content}}</td>
+                <td>{{task.frequency}}</td>
+
+            </tr>
+            </table>
+                    </div>
+    </div>
+</div>

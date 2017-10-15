@@ -1,0 +1,6 @@
+<ul>
+    <li ng-repeat="mean in users"
+    ng-show="user._id !==mean._id">{{mean.email}}<a ng-click="follow(user._id,mean._id)"
+    ng-hide="checkisFollowing(mean._id)">follow</a>
+        <a ng-click="unfollow(user._id,mean._id)"  ng-show="checkisFollowing(mean._id)">unfollow</a></li>
+</ul>
